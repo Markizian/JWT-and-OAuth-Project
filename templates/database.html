@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>JWT and OAuth Project</title>
+  </head>
+  <body>
+  <h1>Database</h1>
+
+  <h2>Users</h2>
+  {% if data.users %}
+    <table cellpadding="5">
+      <tr>
+        <th>ID</th>
+        <th>Email</th>
+        <th>Name</th>
+      </tr>
+      {% for user in data.users %}
+        <tr>
+          <td>{{ user.id }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.name }}</td>
+        </tr>
+      {% endfor %}
+    </table>
+  {% else %}
+    <p>No users found.</p>
+  {% endif %}
+
+  <h2>Token Blocklist</h2>
+  {% if data.tokens %}
+    <table cellpadding="5">
+      <tr>
+        <th>ID</th>
+        <th>JTI</th>
+        <th>Token type</th>
+        <th>Created at</th>
+      </tr>
+      {% for token in data.tokens %}
+        <tr>
+          <td>{{ token.id }}</td>
+          <td>{{ token.jti }}</td>
+          <td>{{ token.token_type }}</td>
+          <td>{{ token.created_at }}</td>
+        </tr>
+      {% endfor %}
+    </table>
+  {% else %}
+    <p>No users found.</p>
+  {% endif %}
+  <a href="{{ url_for('main.index') }}">Back</a>
+  </body>
+</html>

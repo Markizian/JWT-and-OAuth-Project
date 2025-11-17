@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Flask
+instance/
+*.db
+
+# Unit test / coverage reports
+.pytest_cache/
+
+# Environments
+.venv/
+env/
+venv/
+
+# Environmental variables
+.env
+*.env

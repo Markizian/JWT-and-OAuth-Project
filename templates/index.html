@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>JWT and OAuth Project</title>
+  </head>
+  <body>
+    <h1>JWT and OAuth Pet project</h1>
+    <h4>
+      OAuth for registration and login, JWT for tokens.
+      Sentry for error tracking, Prometheus + Grafana for collecting metrics.
+      SQLAlchemy for database.
+    </h4>
+    <p>
+      Instruction: <br>
+      1. Sign in with google account to get <b>access</b> and <b>refresh</b> tokens.<br>
+      2. Tokens are stored in cookies.<br>
+      3. Withdraw <b>access</b> token.<br>
+      4. Refresh <b>access</b> token with <b>refresh</b> token.<br>
+      5. Withdraw <b>refresh</b> token.<br>
+      6. Try to refresh <b>access</b> token with <b>refresh</b> token.<br>
+      7. Withdraw <b>access</b> token.<br>
+      8. Go to step 1.
+    </p>
+    <p>
+      All withdrawn tokens are in database in Token Blocklist.<br>
+      When you sign up new record with id, name, email is created in database.<br>
+      <br>
+      To see prometheus metrics go to <a href="/metrics">/metrics</a> endpoint.<br>
+      To connect google to oauth create .env with GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET<br>
+    </p>
+
+    {% if message %}
+      <h3>{{ message }}</h3>
+
+      {% if token_type == "access" %}
+        <ul>
+          <li><a href="{{ url_for('auth.refresh') }}">Refresh access token</a></li>
+        </ul>
+      {% elif token_type == "refresh" %}
+        <ul>
+          <li>Refresh token is invalid. You have to login</li>
+          <a href="{{ url_for('main.index') }}">Back</a>
+        </ul>
+        
+      {% endif %}
+    {% endif %}
+
+    {% if data.user %}
+      <p>Hello, {{ data.user.name }}</p>
+      <p>ID: {{ data.user.id }}</p>
+      <p>Email: {{ data.user.email }}</p>
+      <hr>
+
+      <h3>Endpoints links</h3>
+      <ul>
+        <li><a href="{{ url_for('auth.refresh') }}">Refresh token</a></li>
+        <li><a href="{{ url_for('auth.logout_access') }}">Withdraw access token</a></li>
+        <li><a href="{{ url_for('auth.logout_refresh') }}">Withdraw refresh token</a></li>
+      </ul>
+
+      <p>Access token: {{ data.access }}</p>
+      <p>Refresh token: {{ data.refresh }}</p>
+    {% else %}
+      <a href="{{ url_for('auth.login') }}">Sign in with Google</a>
+    {% endif %}
+    <br><br>
+    <a href="{{ url_for('main.database') }}">Database</a>
+  </body>
+</html>
