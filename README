@@ -19,8 +19,10 @@ A minimal Flask application demonstrating how to work with JWT authentication an
 ### Testing
 In folder /tests all tests
 
-### Monitoring
-There is Sentry and Prometheus not completed integration.
+### Analytics and Monitoring
+- Sentry
+- Prometheus
+- Grafana
 
 ### Run
 Run file run.py

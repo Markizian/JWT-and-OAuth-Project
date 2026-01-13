@@ -2,15 +2,8 @@ from flask import Flask
 from app.extensions import db, jwt
 from app.oauth_providers import register_oauth_providers
 from prometheus_flask_exporter import PrometheusMetrics
-#import sentry_sdk
-#from sentry_sdk.integrations.flask import FlaskIntegration
-#from prometheus_flask_exporter import PrometheusMetrics
+from config import init_sentry
 
-#sentry_sdk.init(
-#    dsn="https://<PUBLIC_KEY>@sentry.io/<PROJECT_ID>",
-#    integrations=[FlaskIntegration()],
-#    traces_sample_rate=1.0
-#)
 
 def create_app(config_class="config.Config"):
     app = Flask(__name__)
@@ -33,6 +26,8 @@ def create_app(config_class="config.Config"):
 
 app = create_app()
 metrics = PrometheusMetrics(app)
+metrics.info("app_info", "Application info", version="1.0.0")
+init_sentry()
 
 if __name__ == "__main__":
     app.run(debug=True)
