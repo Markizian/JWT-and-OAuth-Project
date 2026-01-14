@@ -26,7 +26,6 @@ def create_app(config_class="config.Config"):
 
 app = create_app()
 metrics = PrometheusMetrics(app)
-metrics.info("app_info", "Application info", version="1.0.0")
 init_sentry()
 
 if __name__ == "__main__":

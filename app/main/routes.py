@@ -31,4 +31,3 @@ def database():
         "tokens": TokenBlocklist.query.all()
     }
     return render_template("database.html", data=data)
-

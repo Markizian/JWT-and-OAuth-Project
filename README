@@ -25,4 +25,5 @@ In folder /tests all tests
 - Grafana
 
 ### Run
+Must be OAuth GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET and Sentry SENTRY_DSN
 Run file run.py
