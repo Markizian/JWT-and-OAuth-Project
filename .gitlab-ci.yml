@@ -1,0 +1,23 @@
+stages:
+  - test
+  - deploy
+
+
+test:
+  stage: test
+  tags: [local]
+  rules:
+    - if: '$CI_COMMIT_BRANCH'
+  script:
+    - cd "$CI_PROJECT_DIR"
+    - docker build -t "$JWT-and-OAuth-Project:test" .
+    - docker run --rm "$JWT-and-OAuth-Project:test" pytest -q
+
+deploy:
+  stage: deploy
+  tags: [local]
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'
+  script:
+    - docker compose -f docker-compose.yml -p JWT-and-OAuth-Project up -d --build --remove-orphans
+    - docker compose -f docker-compose.yml -p JWT-and-OAuth-Project ps
