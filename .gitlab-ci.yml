@@ -2,7 +2,7 @@ stages:
   - test
   - deploy
 
-
+ssh://git@192.168.88.4:2222/root/jwt-and-oauth-project.git
 test:
   stage: test
   tags: [local]
@@ -10,8 +10,8 @@ test:
     - if: '$CI_COMMIT_BRANCH'
   script:
     - cd "$CI_PROJECT_DIR"
-    - docker build -t "$JWT-and-OAuth-Project:test" .
-    - docker run --rm "$JWT-and-OAuth-Project:test" pytest -q
+    - docker build -t "JWT-and-OAuth-Project:test" .
+    - docker run --rm "JWT-and-OAuth-Project:test" pytest -q
 
 deploy:
   stage: deploy
