@@ -2,7 +2,7 @@ stages:
   - test
   - deploy
 
-ssh://git@192.168.88.4:2222/root/jwt-and-oauth-project.git
+
 test:
   stage: test
   tags: [local]
