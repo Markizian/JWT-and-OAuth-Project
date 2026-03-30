@@ -1,29 +1,28 @@
 # Flask JWT & OAuth Pet Project
+    A minimal Flask application demonstrating how to work with JWT authentication and OAuth 2.0.  
 
-A minimal Flask application demonstrating how to work with JWT authentication and OAuth 2.0.  
+# Features
+    User registration and login
+    JWT access and refresh tokens
+    Protected routes using JWT decorators
+    Basic OAuth 2.0 login example
+    Simple REST API structure
 
-### Features
-- User registration and login
-- JWT access and refresh tokens
-- Protected routes using JWT decorators
-- Basic OAuth 2.0 login example
-- Simple REST API structure
+# Tech Stack
+    Python
+    Flask
+    flask-jwt-extended
+    OAuth 2.0
+    SQLAlchemy
 
-### Tech Stack
-- Python
-- Flask
-- flask-jwt-extended
-- OAuth 2.0
-- SQLAlchemy
+# Testing
+    In folder /tests all tests
 
-### Testing
-In folder /tests all tests
+# Analytics and Monitoring
+    Sentry
+    Prometheus
+    Grafana
 
-### Analytics and Monitoring
-- Sentry
-- Prometheus
-- Grafana
-
-### Run
-Must be OAuth GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET and Sentry SENTRY_DSN
-Run file run.py
+# Run
+    Must be OAuth GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET and Sentry SENTRY_DSN
+    Run file run.py
